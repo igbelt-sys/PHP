@@ -10,8 +10,10 @@
     <?php 
         echo "codigo em php";
         //comentario dentro do php com /
-
-        echo "<strong> usando tags <strong> ";
-    </php>
+        echo "<strong> usando tags </strong> ";
+        //usando tags
+        echo "<h1> TITULO </h1>"
+        //titulo h1 
+    ?>
 </body>
 </html>
