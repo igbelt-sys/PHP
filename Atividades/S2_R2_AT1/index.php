@@ -12,7 +12,7 @@
         //comentario dentro do php com /
         echo "<strong> usando tags </strong> ";
         //usando tags
-        echo "<h1> TITULO </h1>"
+        echo "<h1> TITULO </h1>";
         //titulo h1 
     ?>
 </body>
