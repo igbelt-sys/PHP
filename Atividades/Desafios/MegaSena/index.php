@@ -1,8 +1,25 @@
 <?php
-$numeroSorteado = '';
+$resultado = '';
 
 if (isset($_POST['sortear'])) {
-    $numeroSorteado = mt_rand(1, 60);
+    $numerosSorteados = [];
+
+    while (count($numerosSorteados) < 6) {
+        $numero = mt_rand(1, 60);
+
+        if (!in_array($numero, $numerosSorteados)) {
+            $numerosSorteados[] = $numero;
+        }
+    }
+
+    $numerosFormatados = [];
+
+    foreach ($numerosSorteados as $numero) {
+        $numerosFormatados[] = str_pad($numero, 2, '0', STR_PAD_LEFT);
+        //strpadleft é uma funcao que completa o texto co caracteres ate ele ficar com um tamanho definido, 01 07 12
+    }
+
+    $resultado = implode('-', $numerosFormatados);
 }
 ?>
 
@@ -19,16 +36,16 @@ if (isset($_POST['sortear'])) {
 <body>
     <main class="container">
         <h1>Mega-Sena</h1>
-        <p>Clique no botao para sortear um numero aleatorio.</p>
+        <p>Clique no botao para sortear 6 numeros.</p>
 
         <form method="post">
-            <button type="submit" name="sortear">Sortear numero</button>
+            <button type="submit" name="sortear">Sortear numeros</button>
         </form>
 
-        <?php if ($numeroSorteado): ?>
+        <?php if ($resultado !== ''): ?>
             <div class="resultado">
-                <h2>Numero sorteado</h2>
-                <p><?= $numeroSorteado ?></p>
+                <h2>Numeros sorteados</h2>
+                <p><?= $resultado ?></p>
             </div>
         <?php endif; ?>
     </main>
